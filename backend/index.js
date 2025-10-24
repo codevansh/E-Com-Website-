@@ -10,7 +10,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb+srv://vanshmehta0304:eAvlnkanRqs6iY97@cluster0.jiei7d7.mongodb.net/" )
+mongoose.connect("Your MongoDB Connection String Here")
 
 app.get("/", (req, res) => {
     res.send("Express App is Running")
