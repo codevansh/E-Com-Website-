@@ -31,7 +31,9 @@ const ListProduct = () => {
 
     return (
         <div className="list-product">
+            <div className='list-product-h1'>
             <h1>All Products</h1>
+            </div>
             <div className="listproduct-format-main">
                 <p>Products</p>
                 <p>Title</p>
@@ -43,17 +45,17 @@ const ListProduct = () => {
             <div className="listproduct-allproducts">
                 <hr />
                 {allproducts.map((product, index) => {
-                    return <>
-                            <div key={product.id || index} className="listproduct-format-main listproduct-format">
-                                <img src={product.image} alt="" className="listproduct-product-icon" />
-                                <p>{product.name}</p>
-                                <p>${product.old_price}</p>
-                                <p>${product.new_price}</p>
-                                <p>{product.category}</p>
-                                <img onClick={() => { removeProduct(product.id) }} src={cross_icon} alt="" className='listproduct-remove-icon' />
-                            </div>
-                            {/* <hr /> */}
-                    </>
+                    return (
+                        <div key={product.id || index} className="listproduct-row">
+                            <img src={product.image} alt="" className="listproduct-product-icon" />
+                            <p>{product.name}</p>
+                            <p>${product.old_price}</p>
+                            <p>${product.new_price}</p>
+                            <p>{product.category}</p>
+                            <img onClick={() => { removeProduct(product.id) }} src={cross_icon} alt="" className='listproduct-remove-icon' />
+                        </div>
+                    )
+                    {/* <hr /> */ }
                 })}
             </div>
         </div>

@@ -10,7 +10,7 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("Your MongoDb Link" )
+mongoose.connect("mongodb+srv://vanshmehta0304:eAvlnkanRqs6iY97@cluster0.jiei7d7.mongodb.net/" )
 
 app.get("/", (req, res) => {
     res.send("Express App is Running")
@@ -249,7 +249,7 @@ const fetchUser = async (req, res, next) => {
 //Creating api for adding cartitems in DB
 app.post('/addtocart', fetchUser, async (req, res) => {
     console.log("Product Added", req.body.itemId)
-    let userData = Users.findOne({ _id: req.user.id });
+    let userData = await Users.findOne({ _id: req.user.id });
     userData.cartData[req.body.itemId] += 1;
     await Users.findOneAndUpdate({ _id: req.user.id }, { cartData: userData.cartData })
     res.send("Product Added");
@@ -258,7 +258,7 @@ app.post('/addtocart', fetchUser, async (req, res) => {
 //Creating api for removing cartitems in DB
 app.post('/removefromcart', fetchUser, async (req, res) => {
     console.log("Product Removed", req.body.itemId)
-    let userData = Users.findOne({ _id: req.user.id });
+    let userData = await Users.findOne({ _id: req.user.id });
     if (userData.cartData[req.body.itemId] > 0) {
         userData.cartData[req.body.itemId] -= 1;
     }
@@ -269,7 +269,7 @@ app.post('/removefromcart', fetchUser, async (req, res) => {
 //Creating api for getting cartdata
 app.post('/getcart', fetchUser, async (req, res) => {
     console.log("Get Cart");
-    let userData = await Users.findOne({ _id: req.body.id });
+    let userData = await Users.findOne({ _id: req.user.id });
     res.json(userData.cartData);
 })
 

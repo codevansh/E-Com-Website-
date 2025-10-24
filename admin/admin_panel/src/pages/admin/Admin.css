@@ -2,8 +2,17 @@
     display: flex;
 }
 
+.admin-main-content {
+    flex-grow: 1;
+    padding: 30px;
+}
+
 @media(max-width:800px) {
-    .admin{
+    .admin {
         flex-direction: column;
+    }
+
+    .admin-main-content {
+        padding: 10px;
     }
 }
