@@ -30,7 +30,7 @@ const LoginSignup = () => {
             localStorage.setItem("auth-token", responseData.token);
             window.location.replace("/");
         } else {
-            alert(responseData.message || responseData.msg || "An error occurred");
+            alert( "An error occurred");
         }
     }
 
@@ -51,7 +51,7 @@ const LoginSignup = () => {
             localStorage.setItem("auth-token", responseData.token);
             window.location.replace("/");
         } else {
-            alert(responseData.message || responseData.msg || "An error occurred");
+            alert( "An error occurred");
         }
     }
 
